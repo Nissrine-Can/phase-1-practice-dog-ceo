@@ -26,19 +26,15 @@ document.addEventListener("DOMContentLoaded", function() {
         lis.forEach(li => li.addEventListener("click", function() {
             li.style.color = "red"
         }))
-        
-        let option = document.getElementById("breed-dropdown")
+        }
+  })
+  let option = document.getElementById("breed-dropdown")
       //console.log(option)
         //let select = document.querySelector("select#breed-dropdown > option")
         // console.log(select)
         option.addEventListener("click", function(event) {
             console.log(event.target.value)
         })
-        
-        
-        
-      }
-  })
 })
   //dropdown
   //let select = document.querySelector("#breed-dropdown")
