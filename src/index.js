@@ -31,7 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
       //console.log(option)
         //let select = document.querySelector("select#breed-dropdown > option")
         // console.log(select)
-        
+        option.addEventListener("click", function(event) {
+            console.log(event.target.value)
+        })
         
         
         
