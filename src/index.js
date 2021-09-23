@@ -1,7 +1,7 @@
-//console.log('%c HI', 'color: firebrick')
+
  const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
  const breedUrl = 'https://dog.ceo/api/breeds/list/all'
-
+let breedArr = [];
 document.addEventListener("DOMContentLoaded", function() {
     fetch("https://dog.ceo/api/breeds/image/random/4")
     .then(res => res.json())
@@ -14,36 +14,34 @@ document.addEventListener("DOMContentLoaded", function() {
    fetch("https://dog.ceo/api/breeds/list/all")
     .then(res => res.json())
     .then(function (breedData) {
-        const breeds = breedData.message
-        for (breedKey in breeds) {
-        const li = document.createElement('li')
-        li.textContent = breedKey
-        document.querySelector("#dog-breeds").appendChild(li)
-        li.style.cursor =  "pointer"
-
-        let lis = document.querySelectorAll("ul#dog-breeds > li")
+        breedArr = [...Object.keys(breedData.message)]
         
-        lis.forEach(li => li.addEventListener("click", function() {
-            li.style.color = "red"
-        }))
-        }
+        renderBreed(breedArr);
   })
   let option = document.getElementById("breed-dropdown")
-      //console.log(option)
-        //let select = document.querySelector("select#breed-dropdown > option")
-        // console.log(select)
-    let lis = document.querySelectorAll("ul#dog-breeds > li")
-        option.addEventListener("click", matchLis)
+      
+        option.addEventListener("change", matchLis)
+        
         function matchLis(e) {
             let letter = e.target.value
-            lis.filter(el => el[0] === letter)
-          }
-        
-        
+            let newBreedArr =  breedArr.filter(el => el[0] === letter)
+            document.querySelector("#dog-breeds").innerHTML = ""
+            renderBreed(newBreedArr)
+        }
+
+          function renderBreed (breedArr) {
+            
+            breedArr.forEach(el => {
+                const li = document.createElement('li')
+            li.textContent = el
+            document.querySelector("#dog-breeds").appendChild(li)
+            li.style.cursor =  "pointer"
+            li.addEventListener("click", function() {
+                li.style.color = "red"
+                })
+           })
+        }
 })
-  //dropdown
-  //let select = document.querySelector("#breed-dropdown")
-  //console.log(option)
   
   
 
