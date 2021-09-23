@@ -34,8 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
         // console.log(select)
     let lis = document.querySelectorAll("ul#dog-breeds > li")
         option.addEventListener("click", matchLis)
-        function matchLis() {
-            lis.filter(el => el[0] === "b")
+        function matchLis(e) {
+            let letter = e.target.value
+            lis.filter(el => el[0] === letter)
           }
         
         
