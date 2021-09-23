@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
         li.style.cursor =  "pointer"
 
         let lis = document.querySelectorAll("ul#dog-breeds > li")
-        console.log(lis)
+        
         lis.forEach(li => li.addEventListener("click", function() {
             li.style.color = "red"
         }))
@@ -32,9 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
       //console.log(option)
         //let select = document.querySelector("select#breed-dropdown > option")
         // console.log(select)
-        option.addEventListener("click", function(event) {
-            console.log(event.target.value)
-        })
+    let lis = document.querySelectorAll("ul#dog-breeds > li")
+        option.addEventListener("click", matchLis)
+        function matchLis() {
+            lis.filter(el => el[0] === "b")
+          }
+        
+        
 })
   //dropdown
   //let select = document.querySelector("#breed-dropdown")
